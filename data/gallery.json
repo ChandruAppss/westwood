@@ -1,0 +1,14 @@
+{
+  "images": [
+    { "src": "/images/dish-lamb-chops.webp", "alt": "Braised Lamb Shank", "width": 768, "height": 1024 },
+    { "src": "/images/dish-chicken-wings-1.webp", "alt": "Chicken Wings Arrabiata", "width": 768, "height": 1024 },
+    { "src": "/images/dish-shrimp-pasta.webp", "alt": "Tiger Prawn Pasta", "width": 768, "height": 1024 },
+    { "src": "/images/dish-onion-rings.webp", "alt": "Crispy Onion Rings", "width": 768, "height": 1024 },
+    { "src": "/images/dish-croquettes.webp", "alt": "Chicken Croquettes", "width": 768, "height": 1024 },
+    { "src": "/images/dish-chicken-wings-2.webp", "alt": "Chicken Wings Special", "width": 768, "height": 1024 },
+    { "src": "/images/dish-chicken-rolls.webp", "alt": "Chicken Rolls", "width": 768, "height": 1024 },
+    { "src": "/images/drinks-cocktails.webp", "alt": "Signature Cocktails", "width": 768, "height": 512 },
+    { "src": "/images/dish-club-sandwich.webp", "alt": "Club Sandwich", "width": 600, "height": 600 },
+    { "src": "/images/drinks-cocktails-2.webp", "alt": "Tropical Cocktails", "width": 800, "height": 534 }
+  ]
+}

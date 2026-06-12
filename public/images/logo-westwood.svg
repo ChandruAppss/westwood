@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 160" width="500" height="160">
+  <defs>
+    <style>
+      @font-face {
+        font-family: 'Pacifico';
+        src: local('Pacifico');
+      }
+    </style>
+  </defs>
+
+  <!-- "Westwood" in Pacifico-style script via foreignObject with Google Font -->
+  <!-- Using SVG text with a cursive system font as fallback,
+       but the real render comes from the Next.js Image + CSS font loading -->
+
+  <!-- Script wordmark -->
+  <text
+    x="250"
+    y="112"
+    font-family="Pacifico, 'Brush Script MT', cursive"
+    font-size="110"
+    fill="#2a8c36"
+    text-anchor="middle"
+    letter-spacing="-1"
+  >Westwood</text>
+
+  <!-- Divider lines flanking the tagline -->
+  <line x1="30" y1="133" x2="148" y2="133" stroke="#2a8c36" stroke-width="0.8" opacity="0.6"/>
+  <line x1="352" y1="133" x2="470" y2="133" stroke="#2a8c36" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Tagline -->
+  <text
+    x="250"
+    y="150"
+    font-family="'Oswald', 'Arial Narrow', Arial, sans-serif"
+    font-size="17"
+    font-weight="300"
+    fill="#2a8c36"
+    text-anchor="middle"
+    letter-spacing="6"
+  >BREAKFAST - LUNCH - DINNER</text>
+</svg>

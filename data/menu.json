@@ -1,0 +1,159 @@
+{
+  "categories": [
+    {
+      "id": "main-dishes",
+      "label": "Main Dishes",
+      "bgImage": "/images/dish-lamb-chops.webp",
+      "items": [
+        {
+          "name": "Braised Lamb Shank",
+          "description": "Slow-braised lamb shank with seasonal vegetables, mashed potato and rich demi-glace sauce.",
+          "price": "฿490",
+          "image": "/images/dish-lamb-chops.webp"
+        },
+        {
+          "name": "Chicken Wings Arrabiata",
+          "description": "Crispy chicken wings glazed in a spicy tomato arrabiata sauce, served with fresh herbs.",
+          "price": "฿320",
+          "image": "/images/dish-chicken-wings-1.webp"
+        },
+        {
+          "name": "Shrimp Pasta",
+          "description": "Angel hair pasta with tiger prawns in a rich tomato-cream sauce, topped with parmesan and garlic bread.",
+          "price": "฿380",
+          "image": "/images/dish-shrimp-pasta.webp"
+        },
+        {
+          "name": "Club Sandwich",
+          "description": "Triple-decker club sandwich with grilled chicken, bacon, lettuce, tomato, served with crispy fries.",
+          "price": "฿280",
+          "image": "/images/dish-club-sandwich.webp"
+        }
+      ]
+    },
+    {
+      "id": "starters",
+      "label": "Starters",
+      "bgImage": "/images/dish-onion-rings.webp",
+      "items": [
+        {
+          "name": "Crispy Onion Rings",
+          "description": "Golden beer-battered onion rings served with house-made tartar sauce and a garden side.",
+          "price": "฿180",
+          "image": "/images/dish-onion-rings.webp"
+        },
+        {
+          "name": "Chicken Croquettes",
+          "description": "Three pan-fried chicken croquettes drizzled with creamy white sauce and fresh parsley.",
+          "price": "฿220",
+          "image": "/images/dish-croquettes.webp"
+        },
+        {
+          "name": "Chicken Rolls",
+          "description": "Herb-seasoned chicken rolls filled with spinach and carrot, served with spicy dipping sauce.",
+          "price": "฿240",
+          "image": "/images/dish-chicken-rolls.webp"
+        },
+        {
+          "name": "Bruschetta Selection",
+          "description": "Toasted sourdough with seasonal toppings — classic tomato-basil, mushroom truffle and smoked salmon.",
+          "price": "฿190",
+          "image": "/images/dish-club-sandwich.webp"
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "label": "Desserts",
+      "bgImage": "/images/dish-chicken-rolls.webp",
+      "items": [
+        {
+          "name": "Crème Brûlée",
+          "description": "Classic French vanilla custard with a perfectly caramelised sugar crust, served with fresh berries.",
+          "price": "฿195",
+          "image": "/images/dish-croquettes.webp"
+        },
+        {
+          "name": "Chocolate Fondant",
+          "description": "Warm dark chocolate lava cake with a molten centre, served with vanilla bean ice cream.",
+          "price": "฿210",
+          "image": "/images/dish-club-sandwich.webp"
+        },
+        {
+          "name": "Tiramisu",
+          "description": "Traditional Italian tiramisu with espresso-soaked ladyfingers and mascarpone cream.",
+          "price": "฿185",
+          "image": "/images/dish-chicken-rolls.webp"
+        },
+        {
+          "name": "Seasonal Fruit Tart",
+          "description": "Buttery tart shell with pastry cream topped with the finest seasonal fruits.",
+          "price": "฿175",
+          "image": "/images/dish-onion-rings.webp"
+        }
+      ]
+    },
+    {
+      "id": "sea-food",
+      "label": "Sea Food",
+      "bgImage": "/images/dish-shrimp-pasta.webp",
+      "items": [
+        {
+          "name": "Tiger Prawn Pasta",
+          "description": "Jumbo tiger prawns in a rich tomato-cream linguine, finished with parmesan and toasted ciabatta.",
+          "price": "฿420",
+          "image": "/images/dish-shrimp-pasta.webp"
+        },
+        {
+          "name": "Grilled Sea Bass",
+          "description": "Whole sea bass grilled over open flame with lemon-caper butter and seasonal greens.",
+          "price": "฿480",
+          "image": "/images/dish-onion-rings.webp"
+        },
+        {
+          "name": "Seafood Platter",
+          "description": "A generous selection of prawns, calamari, fish and mussels with three house-made dipping sauces.",
+          "price": "฿650",
+          "image": "/images/dish-lamb-chops.webp"
+        },
+        {
+          "name": "Calamari Fritti",
+          "description": "Lightly battered crispy squid rings served with lemon aioli and fresh parsley.",
+          "price": "฿290",
+          "image": "/images/dish-croquettes.webp"
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "label": "Drinks",
+      "bgImage": "/images/drinks-cocktails.webp",
+      "items": [
+        {
+          "name": "Signature Spritz",
+          "description": "House-crafted Aperol spritz with fresh orange, rosemary and premium prosecco.",
+          "price": "฿280",
+          "image": "/images/drinks-cocktails.webp"
+        },
+        {
+          "name": "Classic Margarita",
+          "description": "Tequila, fresh lime juice and triple sec with a salted rim, served straight up.",
+          "price": "฿260",
+          "image": "/images/drinks-cocktails-2.webp"
+        },
+        {
+          "name": "Blackberry Bramble",
+          "description": "Gin, fresh blackberries, lemon juice and elderflower cordial over crushed ice.",
+          "price": "฿270",
+          "image": "/images/drinks-cocktails.webp"
+        },
+        {
+          "name": "Dirty Martini",
+          "description": "Premium vodka with olive brine and a twist, served ice-cold in a chilled coupe glass.",
+          "price": "฿290",
+          "image": "/images/drinks-cocktails-2.webp"
+        }
+      ]
+    }
+  ]
+}
