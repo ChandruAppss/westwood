@@ -10,6 +10,11 @@ const slides = [
   { src: '/images/drinks-cocktails.webp',     pos: 'center 30%' },
   { src: '/images/dish-chicken-wings-1.webp', pos: 'center 45%' },
   { src: '/images/dish-croquettes.webp',      pos: 'center 35%' },
+  { src: '/images/dish-chicken-rolls.webp',   pos: 'center 40%' },
+  { src: '/images/dish-chicken-wings-2.webp', pos: 'center 50%' },
+  { src: '/images/dish-club-sandwich.webp',   pos: 'center 45%' },
+  { src: '/images/dish-onion-rings.webp',     pos: 'center 35%' },
+  { src: '/images/drinks-cocktails-2.webp',   pos: 'center 30%' },
 ];
 
 const DURATION = 5000; // ms each slide is visible
