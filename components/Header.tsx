@@ -86,9 +86,9 @@ export default function Header({ onReservation }: HeaderProps) {
 
       {/* ── Main nav ── */}
       <div style={{ padding: '14px 0' }}>
-        <div className="container-w" style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
+        <div className="container-w" style={{ display: 'flex', alignItems: 'center' }}>
 
-          {/* Left nav (desktop only) */}
+          {/* ── Desktop: left nav ── */}
           <nav className="hidden lg:flex items-center flex-1">
             {leftNav.map(l => (
               <a key={l.href} href={l.href}
@@ -98,25 +98,21 @@ export default function Header({ onReservation }: HeaderProps) {
               </a>
             ))}
           </nav>
-
           <div className="nav-logo-sep hidden lg:block" />
 
-          {/* Logo — always centered */}
+          {/* ── Mobile: left spacer (same width as hamburger so logo is truly centered) ── */}
+          <div className="lg:hidden" style={{ width: 40, flexShrink: 0 }} />
+
+          {/* ── Logo (center) ── */}
           <a href="#home" onClick={e => handleNav(e, '#home')}
             aria-label="Westwood — home"
-            style={{
-              flexShrink: 0,
-              padding: '0 32px',
-              position: 'absolute',
-              left: '50%',
-              transform: 'translateX(-50%)',
-            }}>
-            <WestwoodLogo className="h-[50px] md:h-[58px] w-auto" />
+            style={{ flex: 1, display: 'flex', justifyContent: 'center', padding: '0 16px' }}>
+            <WestwoodLogo className="h-[48px] md:h-[56px] w-auto" />
           </a>
 
           <div className="nav-logo-sep hidden lg:block" />
 
-          {/* Right nav + CTA (desktop only) */}
+          {/* ── Desktop: right nav + CTA ── */}
           <nav className="hidden lg:flex items-center flex-1 justify-end gap-0">
             {rightNav.map(l => (
               <a key={l.href} href={l.href}
@@ -130,15 +126,15 @@ export default function Header({ onReservation }: HeaderProps) {
             </button>
           </nav>
 
-          {/* Hamburger (mobile only) — pushed to right edge */}
+          {/* ── Mobile: hamburger (right) ── */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className="lg:hidden p-2"
+            className="lg:hidden"
             aria-label="Toggle menu"
-            style={{ background: 'none', border: 'none', cursor: 'pointer', marginLeft: 'auto' }}>
+            style={{ width: 40, flexShrink: 0, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 5, padding: '4px 0' }}>
             {[0,1,2].map(i => (
               <span key={i} style={{
-                display: 'block', width: 24, height: 2, marginBottom: i < 2 ? 5 : 0,
+                display: 'block', width: 22, height: 2,
                 background: '#fff', borderRadius: 1, transition: 'all 0.3s',
                 transform: menuOpen && i === 0 ? 'rotate(45deg) translateY(7px)'
                          : menuOpen && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
