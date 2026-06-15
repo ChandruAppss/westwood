@@ -285,9 +285,9 @@ section { position: relative; scroll-margin-top: 90px; }
 .hero-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(160deg,
-    rgba(15,22,32,0.80) 0%,
-    rgba(15,22,32,0.60) 50%,
-    rgba(15,22,32,0.88) 100%);
+    rgba(15,22,32,0.45) 0%,
+    rgba(15,22,32,0.28) 50%,
+    rgba(15,22,32,0.55) 100%);
 }
 .hero-deco {
   position: absolute; left: 0; right: 0; height: 2px;
