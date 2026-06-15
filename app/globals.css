@@ -1,5 +1,5 @@
 /* ── Google Fonts ────────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 /* ── Tokens ──────────────────────────────────────────────────────── */
@@ -18,8 +18,8 @@
 
   /* Text */
   --white:  #ffffff;
-  --text:   rgba(255,255,255,0.78);
-  --text-2: rgba(255,255,255,0.48);
+  --text:   rgba(255,255,255,0.92);
+  --text-2: rgba(255,255,255,0.68);
   --border: rgba(255,255,255,0.08);
 
   /* Fonts */
@@ -54,12 +54,12 @@ body {
   color: var(--text);
   font-family: var(--sans);
   font-size: 15px;
-  font-weight: 300;
+  font-weight: 500;
   line-height: 1.85;
   overflow-x: hidden;
 }
-h1, h2, h3 { font-family: var(--sans); color: #fff;  line-height: 1.15; font-weight: 700; letter-spacing: 1px; }
-h4, h5, h6 { font-family: var(--sans); color: #fff;  line-height: 1.3;  font-weight: 600; }
+h1, h2, h3 { font-family: var(--sans); color: #fff;  line-height: 1.15; font-weight: 800; letter-spacing: 1px; }
+h4, h5, h6 { font-family: var(--sans); color: #fff;  line-height: 1.3;  font-weight: 700; }
 a           { text-decoration: none; color: inherit; }
 img         { display: block; max-width: 100%; }
 button      { font-family: inherit; cursor: pointer; border: none; background: none; }
@@ -347,8 +347,8 @@ section { position: relative; scroll-margin-top: 90px; }
   display: flex; justify-content: space-between; align-items: baseline;
   padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.hours-day  { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-2); }
-.hours-time { font-family: var(--sans); font-size: 15px; color: var(--green); font-weight: 600; }
+.hours-day  { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.80); font-weight: 600; }
+.hours-time { font-family: var(--sans); font-size: 16px; color: var(--green); font-weight: 700; }
 .tel-link {
   font-family: var(--sans); font-size: clamp(20px, 2.5vw, 28px);
   color: var(--green); font-weight: 600; letter-spacing: 1px;
@@ -386,8 +386,8 @@ section { position: relative; scroll-margin-top: 90px; }
   display: flex; align-items: center; justify-content: center;
   color: var(--green); margin-bottom: 22px;
 }
-.fcard h3 { font-size: 15px; color: #fff; margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase; }
-.fcard p  { font-size: 14px; line-height: 1.8; color: var(--text-2); }
+.fcard h3 { font-size: 15px; color: #fff; margin-bottom: 12px; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; }
+.fcard p  { font-size: 14px; line-height: 1.8; color: var(--text-2); font-weight: 500; }
 
 /* ── Menu section ─────────────────────────────────────────────────── */
 .menu-section { position: relative; padding: 120px 0; overflow: hidden; background: var(--bg-dark); }
@@ -427,10 +427,10 @@ section { position: relative; scroll-margin-top: 90px; }
 }
 .mc-body { padding: 20px 22px 22px; }
 .mc-name {
-  font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 13px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase;
   color: #fff; margin-bottom: 8px;
 }
-.mc-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.65; }
+.mc-desc { font-size: 12px; color: rgba(255,255,255,0.70); line-height: 1.65; font-weight: 500; }
 .mc-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
 .mc-price {
   display: inline-block; padding: 5px 14px;
@@ -486,7 +486,7 @@ section { position: relative; scroll-margin-top: 90px; }
 .tcard:hover, .tcard.active { border-color: var(--green); transform: translateY(-4px); }
 .tcard blockquote {
   font-family: var(--sans); font-style: normal;
-  font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.85; margin: 14px 0 22px;
+  font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.85; margin: 14px 0 22px; font-weight: 500;
 }
 .tcard-stars { color: var(--green); letter-spacing: 3px; font-size: 13px; }
 
@@ -523,8 +523,8 @@ section { position: relative; scroll-margin-top: 90px; }
 }
 .cinfo:first-of-type { border-top: 1px solid rgba(255,255,255,0.07); }
 .cinfo-icon { color: var(--green); margin-top: 2px; flex-shrink: 0; }
-.cinfo h5   { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #fff; margin-bottom: 5px; }
-.cinfo p    { font-size: 13px; color: var(--text-2); line-height: 1.65; }
+.cinfo h5   { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: #fff; margin-bottom: 5px; font-weight: 800; }
+.cinfo p    { font-size: 13px; color: var(--text-2); line-height: 1.65; font-weight: 600; }
 
 /* Legacy */
 .contact-icon-item { display: flex; gap: 20px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
@@ -551,31 +551,60 @@ section { position: relative; scroll-margin-top: 90px; }
 
 /* ── Responsive ───────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .container-w { padding: 0 30px; }
-  .sec { padding: 90px 0; }
+  .container-w { padding: 0 28px; }
+  .sec { padding: 88px 0; }
   .about-img-border { display: none; }
   .about-split { grid-template-columns: 1fr; }
-  .about-quote, .about-hours { padding: 70px 40px; }
+  .about-quote, .about-hours { padding: 64px 36px; }
   .about-img-wrapper { height: 420px; }
-  .menu-section { padding: 90px 0; }
-  .reservation-section { padding: 90px 0; }
+  .menu-section { padding: 88px 0; }
+  .reservation-section { padding: 88px 0; }
   .reserv-inline-grid { grid-template-columns: 1fr 1fr 1fr; }
   .gallery-grid { columns: 2; }
   .menu-tab-btn { padding: 12px 18px; font-size: 10px; }
 }
 @media (max-width: 768px) {
-  .container-w { padding: 0 20px; }
-  .sec { padding: 72px 0; }
-  .menu-section, .reservation-section { padding: 72px 0; }
-  .about-img-wrapper { height: 320px; }
-  .about-quote, .about-hours { padding: 60px 28px; }
+  .container-w { padding: 0 18px; }
+  .sec { padding: 64px 0; }
+  .menu-section, .reservation-section { padding: 64px 0; }
+  .about-img-wrapper { height: 280px; }
+  .about-quote, .about-hours { padding: 48px 24px; }
+  .about-split { grid-template-columns: 1fr; }
   .gallery-grid { columns: 2; }
   .hero-socials { display: none; }
   .reserv-inline-grid { grid-template-columns: 1fr 1fr; }
-  .menu-tab-btn { padding: 10px 14px; font-size: 10px; letter-spacing: 2px; }
+  .menu-tab-btn { padding: 10px 12px; font-size: 10px; letter-spacing: 1.5px; }
+  /* About hours mobile */
+  .hours-row { flex-direction: row; gap: 8px; }
+  .hours-day { font-size: 10px; }
+  .hours-time { font-size: 15px; }
+  /* Stat numbers */
+  .stat-num { font-size: clamp(36px, 8vw, 52px); }
+  /* Section headings */
+  .sh h2 { font-size: clamp(26px, 6vw, 40px); }
+  /* Tcard */
+  .tcard { padding: 28px 22px; }
+  .tcard blockquote { font-size: 13px; }
+  /* fcard */
+  .fcard { padding: 32px 24px; }
 }
 @media (max-width: 480px) {
-  .sec { padding: 60px 0; }
+  .container-w { padding: 0 16px; }
+  .sec { padding: 52px 0; }
+  .menu-section, .reservation-section { padding: 52px 0; }
   .gallery-grid { columns: 1; }
   .reserv-inline-grid { grid-template-columns: 1fr; }
+  /* Stack about hours */
+  .about-quote, .about-hours { padding: 40px 18px; }
+  /* Tabs scroll horizontal */
+  .menu-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+  .menu-tabs::-webkit-scrollbar { display: none; }
+  .menu-tab-btn { white-space: nowrap; padding: 10px 14px; font-size: 9px; letter-spacing: 1.5px; }
+  /* Contact info */
+  .cinfo { gap: 14px; padding: 14px 0; }
+  .cinfo p { font-size: 13px; }
+  /* Footer */
+  .footer-wrap { padding: 48px 0 0; }
+  /* Hero min-height on small phones */
+  .hero-wrap { min-height: 600px; }
 }

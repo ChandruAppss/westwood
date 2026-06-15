@@ -130,12 +130,12 @@ export default function AboutSection() {
           </div>
 
           <div style={{ padding: '18px 22px', border: '1px solid rgba(113,184,95,0.18)', background: 'rgba(113,184,95,0.05)', marginBottom: 32 }}>
-            <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7 }}>
+            <p style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.82)', lineHeight: 1.7 }}>
               Reservations recommended on weekends. Walk-ins welcome based on availability.
             </p>
           </div>
 
-          <div style={{ marginBottom: 8, fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>
+          <div style={{ marginBottom: 8, fontSize: 10, fontWeight: 700, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)' }}>
             Call Us
           </div>
           <a href={`tel:${contact.phoneRaw}`} className="tel-link">{contact.phone}</a>
