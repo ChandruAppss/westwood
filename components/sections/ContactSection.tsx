@@ -18,7 +18,7 @@ export default function ContactSection() {
     <section id="contacts" ref={ref} style={{ padding: 0, background: 'var(--bg)' }}>
 
       {/* Full-width map */}
-      <div style={{ width: '100%', height: 400, position: 'relative' }}>
+      <div className="contact-map" style={{ width: '100%', height: 380, position: 'relative' }}>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.3455512246167!2d100.50967407507756!3d13.71035528701447!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e2996f4bd78c5d%3A0x3d2b1bdbe609490d!2sWestwood%20Restaurant!5e0!3m2!1sen!2sth!4v1718000000000!5m2!1sen!2sth"
           style={{ width: '100%', height: '100%', filter: 'invert(90%) hue-rotate(180deg) contrast(0.85)', border: 'none', display: 'block' }}
@@ -102,12 +102,12 @@ export default function ContactSection() {
                   display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
                   padding: '12px 0', borderBottom: '1px solid rgba(255,255,255,0.07)',
                 }}>
-                  <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', letterSpacing: '1px' }}>{h.day}</span>
-                  <span style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--green)', fontWeight: 600 }}>{h.time}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.82)', letterSpacing: '1px' }}>{h.day}</span>
+                  <span style={{ fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--green)', fontWeight: 700 }}>{h.time}</span>
                 </div>
               ))}
               <div style={{ marginTop: 24, padding: '16px 20px', background: 'rgba(113,184,95,0.06)', border: '1px solid rgba(113,184,95,0.18)' }}>
-                <p style={{ fontSize: 12, color: 'rgba(255,255,255,0.45)', lineHeight: 1.7 }}>
+                <p style={{ fontSize: 12, fontWeight: 600, color: 'rgba(255,255,255,0.78)', lineHeight: 1.7 }}>
                   Reservations recommended on weekends. Walk-ins welcome.
                 </p>
               </div>
@@ -118,7 +118,7 @@ export default function ContactSection() {
               <h4 style={{ fontSize: 10, letterSpacing: '4px', textTransform: 'uppercase', marginBottom: 24, color: 'var(--green)', fontWeight: 600 }}>
                 Quick Reservation
               </h4>
-              <p style={{ fontSize: 13, lineHeight: 1.85, marginBottom: 28, color: 'rgba(255,255,255,0.45)' }}>
+              <p style={{ fontSize: 13, fontWeight: 500, lineHeight: 1.85, marginBottom: 28, color: 'rgba(255,255,255,0.80)' }}>
                 Ready to dine with us? Call us directly or use our booking form for the best table availability.
               </p>
               <a href={`tel:${contact.phoneRaw}`} className="btn-primary" style={{ display: 'flex', marginBottom: 12, justifyContent: 'center' }}>

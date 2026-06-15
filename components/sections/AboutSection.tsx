@@ -19,7 +19,7 @@ export default function AboutSection() {
     <div id="about" ref={ref} style={{ background: 'var(--bg)' }}>
 
       {/* ── Story row ── */}
-      <section style={{ padding: '120px 0', background: 'var(--bg)' }}>
+      <section className="sec" style={{ background: 'var(--bg)' }}>
         <div className="container-w">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
 
@@ -39,7 +39,7 @@ export default function AboutSection() {
                 padding: '18px 28px',
               }}>
                 <div style={{ fontSize: 32, fontWeight: 700, color: 'var(--green)', letterSpacing: '1px', lineHeight: 1 }}>12+</div>
-                <div style={{ fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.40)', marginTop: 4 }}>Years of Excellence</div>
+                <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', marginTop: 4 }}>Years of Excellence</div>
               </div>
             </div>
 
@@ -49,7 +49,7 @@ export default function AboutSection() {
               <h2 style={{ fontSize: 'clamp(28px,3.5vw,46px)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '3px', marginBottom: 8 }}>
                 Westwood
               </h2>
-              <h2 style={{ fontSize: 'clamp(28px,3.5vw,46px)', fontWeight: 300, textTransform: 'uppercase', letterSpacing: '3px', color: 'rgba(255,255,255,0.30)', marginBottom: 32 }}>
+              <h2 style={{ fontSize: 'clamp(28px,3.5vw,46px)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '3px', color: 'rgba(255,255,255,0.55)', marginBottom: 32 }}>
                 Restaurant
               </h2>
 
@@ -58,18 +58,18 @@ export default function AboutSection() {
                 <div style={{ width: 8, height: 8, background: 'var(--green)', borderRadius: '50%' }} />
               </div>
 
-              <p style={{ color: 'rgba(255,255,255,0.55)', lineHeight: 1.9, marginBottom: 20, fontSize: 14 }}>
+              <p style={{ color: 'rgba(255,255,255,0.88)', lineHeight: 1.9, marginBottom: 20, fontSize: 14, fontWeight: 500 }}>
                 Westwood blends contemporary elegance with genuine comfort — a place where every detail, from the handpicked ingredients to the warmly lit ambiance, is crafted to deliver an unforgettable experience.
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.40)', lineHeight: 1.9, marginBottom: 36, fontSize: 14 }}>
+              <p style={{ color: 'rgba(255,255,255,0.72)', lineHeight: 1.9, marginBottom: 36, fontSize: 14, fontWeight: 500 }}>
                 Rooted in European culinary tradition and elevated by the richness of Bangkok's finest produce, our kitchen is led by chefs who believe that great food is an act of love.
               </p>
 
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginBottom: 40, padding: '24px 0', borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 40, padding: '24px 0', borderTop: '1px solid rgba(255,255,255,0.07)', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
                 {[['2.4k+','Happy Guests'],['350+','Menu Items'],['12+','Awards Won']].map(([n,l]) => (
                   <div key={l} style={{ textAlign: 'center' }}>
-                    <div style={{ fontSize: 28, fontWeight: 700, color: 'var(--green)', letterSpacing: '1px' }}>{n}</div>
-                    <div style={{ fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)', marginTop: 4 }}>{l}</div>
+                    <div style={{ fontSize: 28, fontWeight: 800, color: 'var(--green)', letterSpacing: '1px' }}>{n}</div>
+                    <div style={{ fontSize: 10, fontWeight: 700, letterSpacing: '2px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.70)', marginTop: 4 }}>{l}</div>
                   </div>
                 ))}
               </div>
@@ -94,8 +94,8 @@ export default function AboutSection() {
           <div style={{ position: 'relative', zIndex: 10 }}>
             <div style={{ fontSize: 72, color: 'var(--green)', fontWeight: 700, lineHeight: 0.8, marginBottom: 20, opacity: 0.5 }}>&ldquo;</div>
             <blockquote style={{
-              fontFamily: 'var(--sans)', fontSize: 'clamp(16px,1.8vw,22px)',
-              color: '#fff', lineHeight: 1.7, fontWeight: 300, letterSpacing: '0.5px', marginBottom: 28,
+              fontFamily: 'var(--sans)', fontSize: 'clamp(15px,1.8vw,20px)',
+              color: '#fff', lineHeight: 1.7, fontWeight: 600, letterSpacing: '0.5px', marginBottom: 28,
             }}>
               Great food is the story of where we come from, where we are, and where we want to be.
             </blockquote>
@@ -103,7 +103,7 @@ export default function AboutSection() {
               <div style={{ width: 36, height: 2, background: 'var(--green)' }} />
               <div>
                 <div style={{ color: '#fff', fontWeight: 600, fontSize: 13, letterSpacing: '2px', textTransform: 'uppercase' }}>Chef James Westwood</div>
-                <div style={{ color: 'rgba(255,255,255,0.40)', fontSize: 10, letterSpacing: '3px', textTransform: 'uppercase', marginTop: 4 }}>Executive Chef &amp; Founder</div>
+                <div style={{ color: 'rgba(255,255,255,0.70)', fontSize: 10, fontWeight: 600, letterSpacing: '3px', textTransform: 'uppercase', marginTop: 4 }}>Executive Chef &amp; Founder</div>
               </div>
             </div>
           </div>

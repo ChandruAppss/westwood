@@ -109,7 +109,7 @@ export default function ReservationSection() {
                       <path d="M20 6 9 17l-5-5"/>
                     </svg>
                   </div>
-                  <span style={{ fontSize: 11, color: 'rgba(255,255,255,0.40)', letterSpacing: '0.5px' }}>{t}</span>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: 'rgba(255,255,255,0.78)', letterSpacing: '0.5px' }}>{t}</span>
                 </div>
               ))}
             </div>
