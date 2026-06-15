@@ -4,6 +4,7 @@ import socials from '@/data/socials.json';
 
 interface HeroProps { onReservation: () => void; }
 
+/* Ken Burns fallback slides — shown while video loads or on browsers that block autoplay */
 const slides = [
   { src: '/images/dish-lamb-chops.webp',      pos: 'center 40%' },
   { src: '/images/dish-shrimp-pasta.webp',    pos: 'center 50%' },
@@ -17,22 +18,31 @@ const slides = [
   { src: '/images/drinks-cocktails-2.webp',   pos: 'center 30%' },
 ];
 
-const DURATION = 5000; // ms each slide is visible
+const DURATION = 5000;
 
 export default function HeroSection({ onReservation }: HeroProps) {
-  const [current, setCurrent] = useState(0);
-  const [prev,    setPrev]    = useState<number | null>(null);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const videoRef  = useRef<HTMLVideoElement>(null);
+  const [videoOk, setVideoOk]  = useState(false);
+  const [current, setCurrent]  = useState(0);
+  const [prev,    setPrev]     = useState<number | null>(null);
 
+  /* Try to play the video; if it fails, Ken Burns takes over */
   useEffect(() => {
-    timerRef.current = setInterval(() => {
-      setCurrent(c => {
-        setPrev(c);
-        return (c + 1) % slides.length;
-      });
-    }, DURATION);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    const vid = videoRef.current;
+    if (!vid) return;
+    vid.play()
+      .then(() => setVideoOk(true))
+      .catch(() => setVideoOk(false));
   }, []);
+
+  /* Ken Burns timer — only runs when video isn't playing */
+  useEffect(() => {
+    if (videoOk) return;
+    const t = setInterval(() => {
+      setCurrent(c => { setPrev(c); return (c + 1) % slides.length; });
+    }, DURATION);
+    return () => clearInterval(t);
+  }, [videoOk]);
 
   const socList = [
     { key: 'facebook',  label: 'Facebook',  fill: true,
@@ -45,69 +55,49 @@ export default function HeroSection({ onReservation }: HeroProps) {
   return (
     <section id="home" className="hero-wrap">
 
-      {/* ── Ken Burns slideshow ── */}
       <style>{`
-        @keyframes kb-zoom-in {
-          0%   { transform: scale(1.00) translate(0,    0);    }
-          100% { transform: scale(1.12) translate(-1%,  -1%);  }
-        }
-        @keyframes kb-zoom-out {
-          0%   { transform: scale(1.12) translate(1%,   1%);   }
-          100% { transform: scale(1.00) translate(0,    0);    }
-        }
-        @keyframes kb-pan-left {
-          0%   { transform: scale(1.10) translate(2%,   0);    }
-          100% { transform: scale(1.10) translate(-2%,  0);    }
-        }
-        @keyframes kb-pan-right {
-          0%   { transform: scale(1.10) translate(-2%,  0);    }
-          100% { transform: scale(1.10) translate(2%,   0);    }
-        }
-        @keyframes kb-fade-in {
-          0%   { opacity: 0; }
-          100% { opacity: 1; }
-        }
-        @keyframes kb-fade-out {
-          0%   { opacity: 1; }
-          100% { opacity: 0; }
-        }
-        .kb-slide {
-          position: absolute; inset: 0; overflow: hidden;
-        }
-        .kb-slide-img {
-          position: absolute; inset: -8%;
-          background-size: cover;
-          will-change: transform;
-        }
-        .kb-slide.active { z-index: 2; animation: kb-fade-in 1.2s ease forwards; }
-        .kb-slide.leaving { z-index: 1; animation: kb-fade-out 1.2s ease forwards; }
-        .kb-slide.hidden { z-index: 0; opacity: 0; }
-
-        .kb-slide:nth-child(1)  .kb-slide-img { animation: kb-zoom-in   ${DURATION + 1200}ms ease-in-out forwards; }
-        .kb-slide:nth-child(2)  .kb-slide-img { animation: kb-pan-left   ${DURATION + 1200}ms ease-in-out forwards; }
-        .kb-slide:nth-child(3)  .kb-slide-img { animation: kb-zoom-out   ${DURATION + 1200}ms ease-in-out forwards; }
-        .kb-slide:nth-child(4)  .kb-slide-img { animation: kb-pan-right  ${DURATION + 1200}ms ease-in-out forwards; }
-        .kb-slide:nth-child(5)  .kb-slide-img { animation: kb-zoom-in    ${DURATION + 1200}ms ease-in-out forwards; }
+        @keyframes kb-zoom-in  { 0%{transform:scale(1.00) translate(0,0)}    100%{transform:scale(1.12) translate(-1%,-1%)} }
+        @keyframes kb-zoom-out { 0%{transform:scale(1.12) translate(1%,1%)}  100%{transform:scale(1.00) translate(0,0)}    }
+        @keyframes kb-pan-left { 0%{transform:scale(1.10) translate(2%,0)}   100%{transform:scale(1.10) translate(-2%,0)}  }
+        @keyframes kb-pan-right{ 0%{transform:scale(1.10) translate(-2%,0)}  100%{transform:scale(1.10) translate(2%,0)}   }
+        @keyframes kb-fade-in  { 0%{opacity:0} 100%{opacity:1} }
+        @keyframes kb-fade-out { 0%{opacity:1} 100%{opacity:0} }
+        .kb-slide { position:absolute; inset:0; overflow:hidden; }
+        .kb-slide-img { position:absolute; inset:-8%; background-size:cover; will-change:transform; }
+        .kb-slide.active  { z-index:2; animation:kb-fade-in  1.2s ease forwards; }
+        .kb-slide.leaving { z-index:1; animation:kb-fade-out 1.2s ease forwards; }
+        .kb-slide.hidden  { z-index:0; opacity:0; }
+        .kb-slide:nth-child(odd)  .kb-slide-img { animation:kb-zoom-in   ${DURATION+1200}ms ease-in-out forwards; }
+        .kb-slide:nth-child(even) .kb-slide-img { animation:kb-pan-left  ${DURATION+1200}ms ease-in-out forwards; }
       `}</style>
 
-      {slides.map((slide, i) => {
-        let state: 'active' | 'leaving' | 'hidden' = 'hidden';
-        if (i === current) state = 'active';
-        else if (i === prev) state = 'leaving';
+      {/* ── Video background (primary) ── */}
+      <video
+        ref={videoRef}
+        autoPlay muted loop playsInline
+        poster="/images/dish-lamb-chops.webp"
+        style={{
+          position: 'absolute', inset: 0, zIndex: videoOk ? 2 : -1,
+          width: '100%', height: '100%',
+          objectFit: 'cover', objectPosition: 'center',
+          opacity: videoOk ? 1 : 0,
+          transition: 'opacity 0.8s ease',
+        }}
+      >
+        <source src="/videos/hero-bg.mp4" type="video/mp4" />
+      </video>
+
+      {/* ── Ken Burns fallback (shows while video loads) ── */}
+      {!videoOk && slides.map((slide, i) => {
+        const state = i === current ? 'active' : i === prev ? 'leaving' : 'hidden';
         return (
           <div key={i} className={`kb-slide ${state}`}>
-            <div
-              className="kb-slide-img"
-              style={{
-                backgroundImage: `url('${slide.src}')`,
-                backgroundPosition: slide.pos,
-              }}
-            />
+            <div className="kb-slide-img" style={{ backgroundImage: `url('${slide.src}')`, backgroundPosition: slide.pos }} />
           </div>
         );
       })}
 
-      {/* Dark overlay */}
+      {/* Overlay + decorations */}
       <div className="hero-overlay" style={{ zIndex: 3 }} />
       <div className="hero-deco hero-deco-top"    style={{ zIndex: 4 }} />
       <div className="hero-deco hero-deco-bottom" style={{ zIndex: 4 }} />
@@ -127,9 +117,7 @@ export default function HeroSection({ onReservation }: HeroProps) {
           ) : (
             <a key={s.key} href={socials[s.key as keyof typeof socials]}
               target="_blank" rel="noopener noreferrer" aria-label={s.label} className="hero-soc">
-              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                <path d={s.d}/>
-              </svg>
+              <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d={s.d}/></svg>
             </a>
           )
         )}
@@ -144,20 +132,16 @@ export default function HeroSection({ onReservation }: HeroProps) {
           </div>
 
           <h1 style={{
-            fontFamily: 'var(--sans)',
-            fontSize: 'clamp(36px, 5.5vw, 70px)',
-            fontWeight: 700, lineHeight: 1.0,
-            letterSpacing: '4px', textTransform: 'uppercase',
-            color: '#fff', marginBottom: 12,
+            fontFamily: 'var(--sans)', fontSize: 'clamp(36px,5.5vw,70px)',
+            fontWeight: 700, lineHeight: 1.0, letterSpacing: '4px',
+            textTransform: 'uppercase', color: '#fff', marginBottom: 12,
           }}>
             Best Dishes &amp;
           </h1>
           <h1 style={{
-            fontFamily: 'var(--sans)',
-            fontSize: 'clamp(36px, 5.5vw, 70px)',
-            fontWeight: 300, lineHeight: 1.0,
-            letterSpacing: '4px', textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.50)', marginBottom: 32,
+            fontFamily: 'var(--sans)', fontSize: 'clamp(36px,5.5vw,70px)',
+            fontWeight: 300, lineHeight: 1.0, letterSpacing: '4px',
+            textTransform: 'uppercase', color: 'rgba(255,255,255,0.50)', marginBottom: 32,
           }}>
             Ingredients
           </h1>
@@ -169,9 +153,8 @@ export default function HeroSection({ onReservation }: HeroProps) {
           </div>
 
           <p style={{
-            color: 'rgba(255,255,255,0.52)',
-            fontSize: 14, lineHeight: 1.9, letterSpacing: '0.5px',
-            maxWidth: 480, margin: '0 auto 44px',
+            color: 'rgba(255,255,255,0.52)', fontSize: 14, lineHeight: 1.9,
+            letterSpacing: '0.5px', maxWidth: 480, margin: '0 auto 44px',
           }}>
             Always delivering an amazing dining experience — where European craft meets the warmth of Bangkok.
           </p>
@@ -183,41 +166,18 @@ export default function HeroSection({ onReservation }: HeroProps) {
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
-            <button onClick={onReservation} className="btn-secondary">
-              Book a Table
-            </button>
+            <button onClick={onReservation} className="btn-secondary">Book a Table</button>
           </div>
         </div>
       </div>
 
-      {/* Slide dots */}
-      <div style={{
-        position: 'absolute', bottom: 80, left: '50%', transform: 'translateX(-50%)',
-        display: 'flex', gap: 8, zIndex: 10,
-      }}>
-        {slides.map((_, i) => (
-          <button key={i}
-            onClick={() => { setPrev(current); setCurrent(i); }}
-            aria-label={`Slide ${i + 1}`}
-            style={{
-              width: current === i ? 24 : 6, height: 6, borderRadius: 3, padding: 0,
-              background: current === i ? 'var(--green)' : 'rgba(255,255,255,0.28)',
-              border: 'none', cursor: 'pointer', transition: 'all 0.4s',
-            }} />
-        ))}
-      </div>
-
       {/* Scroll indicator */}
       <div style={{
-        position: 'absolute', bottom: 28, left: '50%', transform: 'translateX(-50%)',
+        position: 'absolute', bottom: 32, left: '50%', transform: 'translateX(-50%)',
         display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, zIndex: 10,
       }}>
         <div className="scroll-mouse"><div className="scroll-wheel" /></div>
-        <span style={{
-          fontFamily: 'var(--sans)', fontSize: 9,
-          letterSpacing: '4px', textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.28)',
-        }}>Scroll</span>
+        <span style={{ fontFamily: 'var(--sans)', fontSize: 9, letterSpacing: '4px', textTransform: 'uppercase', color: 'rgba(255,255,255,0.28)' }}>Scroll</span>
       </div>
     </section>
   );
