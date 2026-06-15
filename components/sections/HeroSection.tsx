@@ -20,29 +20,31 @@ const slides = [
 
 const DURATION = 5000;
 
+type VideoState = 'loading' | 'playing' | 'failed';
+
 export default function HeroSection({ onReservation }: HeroProps) {
   const videoRef  = useRef<HTMLVideoElement>(null);
-  const [videoOk, setVideoOk]  = useState(false);
-  const [current, setCurrent]  = useState(0);
-  const [prev,    setPrev]     = useState<number | null>(null);
+  const [videoState, setVideoState] = useState<VideoState>('loading');
+  const [current, setCurrent] = useState(0);
+  const [prev,    setPrev]    = useState<number | null>(null);
 
-  /* Try to play the video; if it fails, Ken Burns takes over */
+  /* Try to play the video; show poster while loading, Ken Burns only on failure */
   useEffect(() => {
     const vid = videoRef.current;
     if (!vid) return;
     vid.play()
-      .then(() => setVideoOk(true))
-      .catch(() => setVideoOk(false));
+      .then(() => setVideoState('playing'))
+      .catch(() => setVideoState('failed'));
   }, []);
 
-  /* Ken Burns timer — only runs when video isn't playing */
+  /* Ken Burns timer — only starts if video genuinely failed */
   useEffect(() => {
-    if (videoOk) return;
+    if (videoState !== 'failed') return;
     const t = setInterval(() => {
       setCurrent(c => { setPrev(c); return (c + 1) % slides.length; });
     }, DURATION);
     return () => clearInterval(t);
-  }, [videoOk]);
+  }, [videoState]);
 
   const socList = [
     { key: 'facebook',  label: 'Facebook',  fill: true,
@@ -71,24 +73,23 @@ export default function HeroSection({ onReservation }: HeroProps) {
         .kb-slide:nth-child(even) .kb-slide-img { animation:kb-pan-left  ${DURATION+1200}ms ease-in-out forwards; }
       `}</style>
 
-      {/* ── Video background (primary) ── */}
+      {/* ── Video background — poster shows natively while video loads ── */}
       <video
         ref={videoRef}
         autoPlay muted loop playsInline
-        poster="/images/dish-lamb-chops.webp"
+        poster="/images/hero-poster.webp"
         style={{
-          position: 'absolute', inset: 0, zIndex: videoOk ? 2 : -1,
+          position: 'absolute', inset: 0,
+          zIndex: videoState !== 'failed' ? 2 : -1,
           width: '100%', height: '100%',
           objectFit: 'cover', objectPosition: 'center',
-          opacity: videoOk ? 1 : 0,
-          transition: 'opacity 0.8s ease',
         }}
       >
         <source src="/videos/hero-bg.mp4" type="video/mp4" />
       </video>
 
-      {/* ── Ken Burns fallback (shows while video loads) ── */}
-      {!videoOk && slides.map((slide, i) => {
+      {/* ── Ken Burns fallback — only if video failed ── */}
+      {videoState === 'failed' && slides.map((slide, i) => {
         const state = i === current ? 'active' : i === prev ? 'leaving' : 'hidden';
         return (
           <div key={i} className={`kb-slide ${state}`}>
