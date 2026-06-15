@@ -124,42 +124,75 @@ export default function HeroSection({ onReservation }: HeroProps) {
       </div>
 
       {/* Centre content */}
+      <style>{`
+        .hero-content { max-width: 680px; margin: 0 auto; text-align: center; padding: 0 20px; }
+        .hero-h1-main {
+          font-family: var(--sans);
+          font-size: clamp(42px, 7vw, 80px);
+          font-weight: 900;
+          line-height: 1.0;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: #fff;
+          margin-bottom: 10px;
+          text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 60px rgba(0,0,0,0.5);
+        }
+        .hero-h1-sub {
+          font-family: var(--sans);
+          font-size: clamp(42px, 7vw, 80px);
+          font-weight: 700;
+          line-height: 1.0;
+          letter-spacing: 4px;
+          text-transform: uppercase;
+          color: rgba(255,255,255,0.80);
+          margin-bottom: 32px;
+          text-shadow: 0 2px 20px rgba(0,0,0,0.7);
+        }
+        .hero-desc {
+          color: rgba(255,255,255,0.85);
+          font-size: 15px;
+          font-weight: 500;
+          line-height: 1.85;
+          letter-spacing: 0.3px;
+          max-width: 440px;
+          margin: 0 auto 44px;
+          text-shadow: 0 1px 8px rgba(0,0,0,0.6);
+        }
+        .hero-btns {
+          display: flex;
+          gap: 14px;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        @media (max-width: 480px) {
+          .hero-h1-main, .hero-h1-sub { letter-spacing: 2px; }
+          .hero-btns { flex-direction: column; align-items: stretch; padding: 0 8px; }
+          .hero-btns .btn-primary, .hero-btns .btn-secondary { justify-content: center; width: 100%; }
+          .hero-desc { font-size: 14px; }
+        }
+      `}</style>
+
       <div className="container-w w-full" style={{ position: 'relative', zIndex: 10 }}>
-        <div style={{ maxWidth: 680, margin: '0 auto', textAlign: 'center' }}>
+        <div className="hero-content">
 
           <div style={{ marginBottom: 24 }}>
             <span className="tag-badge">Premium Dining · Bangkok</span>
           </div>
 
-          <h1 style={{
-            fontFamily: 'var(--sans)', fontSize: 'clamp(36px,5.5vw,70px)',
-            fontWeight: 700, lineHeight: 1.0, letterSpacing: '4px',
-            textTransform: 'uppercase', color: '#fff', marginBottom: 12,
-          }}>
-            Best Dishes &amp;
-          </h1>
-          <h1 style={{
-            fontFamily: 'var(--sans)', fontSize: 'clamp(36px,5.5vw,70px)',
-            fontWeight: 300, lineHeight: 1.0, letterSpacing: '4px',
-            textTransform: 'uppercase', color: 'rgba(255,255,255,0.50)', marginBottom: 32,
-          }}>
-            Ingredients
-          </h1>
+          <h1 className="hero-h1-main">Best Dishes &amp;</h1>
+          <h1 className="hero-h1-sub">Ingredients</h1>
 
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16, marginBottom: 28 }}>
-            <div style={{ width: 60, height: 1, background: 'rgba(113,184,95,0.35)' }} />
-            <div style={{ width: 6, height: 6, background: 'var(--green)', borderRadius: '50%' }} />
-            <div style={{ width: 60, height: 1, background: 'rgba(113,184,95,0.35)' }} />
+            <div style={{ width: 60, height: 1, background: 'rgba(113,184,95,0.50)' }} />
+            <div style={{ width: 7, height: 7, background: 'var(--green)', borderRadius: '50%' }} />
+            <div style={{ width: 60, height: 1, background: 'rgba(113,184,95,0.50)' }} />
           </div>
 
-          <p style={{
-            color: 'rgba(255,255,255,0.52)', fontSize: 14, lineHeight: 1.9,
-            letterSpacing: '0.5px', maxWidth: 480, margin: '0 auto 44px',
-          }}>
+          <p className="hero-desc">
             Always delivering an amazing dining experience — where European craft meets the warmth of Bangkok.
           </p>
 
-          <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <div className="hero-btns">
             <a href="#menu" className="btn-primary">
               Explore Menu
               <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
