@@ -100,8 +100,8 @@ export default function Header({ onReservation }: HeaderProps) {
           </nav>
           <div className="nav-logo-sep hidden lg:block" />
 
-          {/* ── Mobile: left spacer (same width as hamburger so logo is truly centered) ── */}
-          <div className="lg:hidden" style={{ width: 40, flexShrink: 0 }} />
+          {/* ── Mobile: left spacer (mirrors hamburger width so logo is truly centered) ── */}
+          <div className="hdr-mobile-spacer" />
 
           {/* ── Logo (center) ── */}
           <a href="#home" onClick={e => handleNav(e, '#home')}
@@ -129,9 +129,8 @@ export default function Header({ onReservation }: HeaderProps) {
           {/* ── Mobile: hamburger (right) ── */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className="lg:hidden"
-            aria-label="Toggle menu"
-            style={{ width: 40, flexShrink: 0, background: 'none', border: 'none', cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 5, padding: '4px 0' }}>
+            className="hdr-hamburger"
+            aria-label="Toggle menu">
             {[0,1,2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 22, height: 2,
