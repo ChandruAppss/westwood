@@ -86,9 +86,9 @@ export default function Header({ onReservation }: HeaderProps) {
 
       {/* ── Main nav ── */}
       <div style={{ padding: '14px 0' }}>
-        <div className="container-w flex items-center">
+        <div className="container-w" style={{ display: 'flex', alignItems: 'center', position: 'relative' }}>
 
-          {/* Left nav */}
+          {/* Left nav (desktop only) */}
           <nav className="hidden lg:flex items-center flex-1">
             {leftNav.map(l => (
               <a key={l.href} href={l.href}
@@ -101,15 +101,22 @@ export default function Header({ onReservation }: HeaderProps) {
 
           <div className="nav-logo-sep hidden lg:block" />
 
-          {/* Logo */}
+          {/* Logo — always centered */}
           <a href="#home" onClick={e => handleNav(e, '#home')}
-            className="flex-shrink-0 px-8" aria-label="Westwood — home">
+            aria-label="Westwood — home"
+            style={{
+              flexShrink: 0,
+              padding: '0 32px',
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+            }}>
             <WestwoodLogo className="h-[50px] md:h-[58px] w-auto" />
           </a>
 
           <div className="nav-logo-sep hidden lg:block" />
 
-          {/* Right nav + CTA */}
+          {/* Right nav + CTA (desktop only) */}
           <nav className="hidden lg:flex items-center flex-1 justify-end gap-0">
             {rightNav.map(l => (
               <a key={l.href} href={l.href}
@@ -123,18 +130,16 @@ export default function Header({ onReservation }: HeaderProps) {
             </button>
           </nav>
 
-          {/* Hamburger */}
+          {/* Hamburger (mobile only) — pushed to right edge */}
           <button
             onClick={() => setMenuOpen(o => !o)}
-            className="lg:hidden ml-auto p-2"
+            className="lg:hidden p-2"
             aria-label="Toggle menu"
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+            style={{ background: 'none', border: 'none', cursor: 'pointer', marginLeft: 'auto' }}>
             {[0,1,2].map(i => (
               <span key={i} style={{
                 display: 'block', width: 24, height: 2, marginBottom: i < 2 ? 5 : 0,
-                background: '#fff',
-                borderRadius: 1,
-                transition: 'all 0.3s',
+                background: '#fff', borderRadius: 1, transition: 'all 0.3s',
                 transform: menuOpen && i === 0 ? 'rotate(45deg) translateY(7px)'
                          : menuOpen && i === 2 ? 'rotate(-45deg) translateY(-7px)' : 'none',
                 opacity: menuOpen && i === 1 ? 0 : 1,
